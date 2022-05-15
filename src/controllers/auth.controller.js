@@ -24,8 +24,8 @@ async function signup(req, res) {
     if (userFound) return res.status(400).json({ message: "User exist" });
 
     const newUser = await User.create({
-      username,
-      email,
+      username: username.toString(),
+      email: email.toString(),
       password: hashPassword,
     });
 
