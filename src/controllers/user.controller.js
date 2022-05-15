@@ -1,6 +1,8 @@
+// Import models
 const User = require("../models/User");
 
-async function getUsers(_req, res) {
+// Return all users
+async function getAllUsers(_req, res) {
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -10,5 +12,5 @@ async function getUsers(_req, res) {
 }
 
 module.exports = {
-  getUsers,
+  getAllUsers,
 };

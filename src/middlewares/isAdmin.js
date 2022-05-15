@@ -1,7 +1,4 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
-
-// middleware to validate token (rutas protegidas)
+// middleware to validate if is a admin user
 module.exports = async (req, res, next) => {
   try {
     const usernameCorrect = "jobx_admin";

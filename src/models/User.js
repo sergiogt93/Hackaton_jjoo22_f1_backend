@@ -5,13 +5,13 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
-      unique: true,
+      required: [true, "Required username"],
+      unique: [true, "Required unique username"],
     },
     email: {
       type: String,
-      required: true,
-      unique: true,
+      required: [true, "Required username"],
+      unique: [true, "Required unique username"],
       trim: true,
       lowercase: true,
       validate: {
@@ -21,7 +21,7 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "Required username"],
       trim: true,
     },
     roles: {

@@ -1,8 +1,14 @@
+// Import configuration
 const config = require("../config/config");
+
+//Import libraries
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+
+//Import models
 const User = require("../models/User");
 
+//Register a new user
 async function signup(req, res) {
   try {
     const { username, email, password } = req.body;
@@ -43,6 +49,7 @@ async function signup(req, res) {
   }
 }
 
+//Login with a user
 async function signin(req, res) {
   try {
     const { email, password } = req.body;
