@@ -1,0 +1,31 @@
+{
+  "name": "jjoo22-f1-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production nodemon src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "build": "tsc",
+    "test": "cross-env NODE_ENV=test jest --watchAll --collectCoverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0",
+    "supertest": "^6.2.3"
+  }
+}
