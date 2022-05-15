@@ -15,10 +15,10 @@ async function signup(req, res) {
           "min 8 length character, and one capital letter and one number",
       });
 
-    const hashPassword = await bcrypt.hash(password, 12);
+    const hashPassword = await bcrypt.hash(password.toString(), 12);
 
     const userFound = await User.findOne({
-      $or: [{ username: username }, { email: email }],
+      $or: [{ username: username.toString() }, { email: email.toString() }],
     });
 
     if (userFound) return res.status(400).json({ message: "User exist" });
@@ -47,12 +47,12 @@ async function signin(req, res) {
   try {
     const { email, password } = req.body;
 
-    const userFound = await User.findOne({ email });
+    const userFound = await User.findOne({ email: email.toString() });
 
     const passwordCorrect =
       userFound === null
         ? false
-        : await bcrypt.compare(password, userFound.password);
+        : await bcrypt.compare(password.toString(), userFound.password);
 
     if (!(userFound && passwordCorrect)) {
       res.status(401).json({ error: "invalid user or password" });

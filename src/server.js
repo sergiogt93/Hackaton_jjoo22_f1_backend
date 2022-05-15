@@ -5,6 +5,7 @@ const server = express();
 
 server.use(cors());
 server.use(express.json());
+server.disable("x-powered-by");
 
 server.use(morgan("dev"));
 
