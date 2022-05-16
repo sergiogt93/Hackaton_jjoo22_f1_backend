@@ -15,6 +15,7 @@ const User = require("../models/User");
 //Register a new user
 async function signup(req, res) {
   try {
+    //Validation parameters
     const { error } = signupValidation(req.body);
     if (error) return res.status(400).json(error.details[0].message);
 
@@ -28,6 +29,7 @@ async function signup(req, res) {
           "min 8 length character, and one capital letter and one number",
       });
 
+    //Encrypt password
     const hashPassword = await bcrypt.hash(password.toString(), 12);
 
     const userFound = await User.findOne({
@@ -46,6 +48,7 @@ async function signup(req, res) {
       res.status(400).json({ error: newUser });
     }
 
+    //Create a new token
     const token = jwt.sign({ id: newUser._id }, config.token_secret, {
       expiresIn: 86400,
     });
@@ -59,12 +62,14 @@ async function signup(req, res) {
 //Login with a user
 async function signin(req, res) {
   try {
+    //Validation parameters
     const { error } = signinValidation(req.body);
     if (error) return res.status(400).json(error.details[0].message);
     const { email, password } = req.body;
 
     const userFound = await User.findOne({ email: email.toString() });
 
+    //Compare the password of database and password parameter of user
     const passwordCorrect =
       userFound === null
         ? false
@@ -74,6 +79,7 @@ async function signin(req, res) {
       res.status(401).json({ error: "invalid user or password" });
     }
 
+    //Create a new token
     const token = jwt.sign({ id: userFound._id }, config.token_secret, {
       expiresIn: 86400,
     });
