@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production nodemon src/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "test": "cross-env NODE_ENV=test jest --watchAll --collectCoverage"
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -22,9 +22,5 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16",
     "validator": "^13.7.0"
-  },
-  "devDependencies": {
-    "jest": "^28.1.0",
-    "supertest": "^6.2.3"
   }
 }
